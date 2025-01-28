@@ -308,6 +308,42 @@
                 alert("Dati per ${meal} inviati con successo!");
                 showForm('mealForms');
             }
+
+            async function submitMeal(meal) {
+            const name = document.getElementById('name').value.trim();
+            const mealScore = calculateScore(meal);  // Aggiungi una funzione per calcolare il punteggio
+            const mealDetails = document.getElementById(meal + 'Story').value;
+        
+            // Prepara i dati da inviare
+            const data = {
+                name: name,
+                meal: meal,
+                score: mealScore,
+                details: mealDetails
+            };
+        
+            // Invia i dati alla funzione serverless
+            try {
+                const response = await fetch('/.netlify/functions/submit-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+        
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Dati inviati con successo!');
+                    showForm('mealForms');
+                } else {
+                    alert('Errore nell\'invio dei dati: ' + result.error);
+                }
+            } catch (error) {
+                alert('Errore nella richiesta: ' + error.message);
+            }
+        }
+
         </script>
 </body>
 
