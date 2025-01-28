@@ -281,70 +281,34 @@
             <button class="btn" onclick="submitMeal('cena')">Invia cena</button>
         </div>
 
-
         <footer>
             <p>&copy; Servizio Civile Acli 2024 - 2025</p>
         </footer>
 
-        <script>
-            function startForm(event) {
-                event.preventDefault(); // Previene il comportamento predefinito del submit
-                const name = document.getElementById('name').value.trim();
-                if (name) {
-                    document.getElementById('userForm').style.display = 'none';
-                    document.getElementById('mealForms').style.display = 'block';
-                } else {
-                    alert('Per favore, inserisci il tuo nome e cognome.');
-                }
-            }
 
-
-            function showForm(meal) {
-                document.querySelectorAll('.mealForm').forEach(form => form.style.display = 'none');
-                document.getElementById(meal).style.display = 'block';
-            }
-
-            function submitMeal(meal) {
-                alert("Dati per ${meal} inviati con successo!");
-                showForm('mealForms');
-            }
-
-            async function submitMeal(meal) {
+    <script>
+        function startForm(event) {
+            event.preventDefault();
             const name = document.getElementById('name').value.trim();
-            const mealScore = calculateScore(meal);  // Aggiungi una funzione per calcolare il punteggio
-            const mealDetails = document.getElementById(meal + 'Story').value;
-        
-            // Prepara i dati da inviare
-            const data = {
-                name: name,
-                meal: meal,
-                score: mealScore,
-                details: mealDetails
-            };
-        
-            // Invia i dati alla funzione serverless
-            try {
-                const response = await fetch('/.netlify/functions/submit-data', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-        
-                const result = await response.json();
-                if (response.ok) {
-                    alert('Dati inviati con successo!');
-                    showForm('mealForms');
-                } else {
-                    alert('Errore nell\'invio dei dati: ' + result.error);
-                }
-            } catch (error) {
-                alert('Errore nella richiesta: ' + error.message);
+            if (name) {
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('mealForms').classList.remove('hidden');
+            } else {
+                alert('Per favore, inserisci il tuo nome e cognome.');
             }
         }
 
-        </script>
+        function showForm(meal) {
+            document.querySelectorAll('.mealForm').forEach(form => form.classList.add('hidden'));
+            document.getElementById(meal).classList.remove('hidden');
+        }
+
+        function submitMeal(meal) {
+            alert(`Dati per ${meal} inviati con successo!`);
+            document.getElementById(meal).classList.add('hidden');
+            document.getElementById('mealForms').classList.remove('hidden');
+        }
+    </script>
 </body>
 
 </html>
