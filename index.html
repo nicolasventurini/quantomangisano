@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A cuore la salute!</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #4f4539;
+            color: white;
+            padding: 1rem 0;
+            height: 15vh;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px;
+        }
+
+        .button {
+            background: #4f4539;
+            color: white;
+            padding: 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 24px;
+            width: 300px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background: #4f4539;
+        }
+
+        .button small {
+            display: block;
+            font-size: 16px;
+            margin-top: 8px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <header>
+        <h1>A cuore la salute!</h1>
+        <p>Partecipa ai giochi per migliorare il tuo benessere e l'ambiente!</p>
+    </header>
+
+    <div class="container">
+        <button class="button" onclick="location.href='passi_da_gigante.html'">
+            <strong>Passi da gigante</strong>
+            <small>Una gara al giorno toglie il medico di torno</small>
+        </button>
+        <button class="button" onclick="location.href='quanto_mangi_sano.html'">
+            <strong>Quanto mangi sano?</strong>
+            <small>Fai dell'alimentazione la tua prevenzione</small>
+        </button>
+        <button class="button" onclick="location.href='sorsi_di_salute.html'">
+            <strong>Sorsi di salute</strong>
+            <small>Bevi molta acqua per una salute ottimale</small>
+        </button>
+        <button class="button" onclick="location.href='eco_challenge.html'">
+            <strong>Eco sfida</strong>
+            <small>Ogni tua scelta conta per il pianeta</small>
+        </button>
+    </div>
+</body>
+
+</html>
